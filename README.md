@@ -15,6 +15,7 @@
    - shop -> de stabilit exact
 
 3. Versiuni:
-  - V1- backend :  - am creat baza aplicatiei: paginile home, login_team, team, admin.
-                   - am creat baza de date ce curprinde: username, password (per echipa pentru logare), puncte (nume de variabila ce trebuie pus in engleza ca sa ramanem cu toate asa), names (voi face ca fiecare echipa sa iti puna ea numele participantilor si sa apara pe pagina team)
+   - V1- backend :  - am creat baza aplicatiei: paginile home, login_team, team, admin.
+                    - am creat baza de date ce curprinde: username, password (per echipa pentru logare), puncte (nume de variabila ce trebuie pus in engleza ca sa ramanem cu toate asa), names (voi face ca fiecare echipa sa iti puna ea numele participantilor si sa apara pe pagina team)
                    - am creat base.html -> asta e baza tuturor html-urilor pe care le vom avea. Va cuprinde doar chestiile comune pentru toate.
+ 
