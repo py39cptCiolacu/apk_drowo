@@ -1,6 +1,6 @@
 ## Aplicatie Drowo
 
-** cod cu cat mai mult comentariu, si cu nume de variabile cat mai intuitive 
+** cod cu cat mai mult comentariu, si cu nume de variabile cat mai intuitive <br>
 ** de fiecare data cand modifici README-ul, 'Vx, backend/frontend' cum e descris si la pct 1 
 
 1. Comenzi git : https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
