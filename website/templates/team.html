@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %} HOME {% endblock %} 
+
+{% block content%}
+
+    <form method="POST">
+        <h3 align="center">Schimba numele coechipierilor</h3>
+        <div class="form-group">
+            <label for="text">Nume Coechipieri</label>
+            <input
+                type="text"
+                class="form-control"
+                id="id_team"
+                name="id_team"
+                placeholder="Numele Coechipierilor"
+            />
+        </div>
+
+    </form>
+
+{% endblock%}
