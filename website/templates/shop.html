@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %} Shop {% endblock %} 
+
+{% block content%}
+
+{% for product in products: %}
+    <span style = "color:{{ product.colors }};   
+                    border: 10px solid blue;
+                    outline: 10px solid darkblue;" > 
+                    {{product.name}} 
+                </span> 
+{% endfor %}
+
+<span style =   >
+
+</span>
+
+{% endblock%}

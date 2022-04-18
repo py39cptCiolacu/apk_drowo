@@ -1,17 +1,21 @@
-{% extends "base.html" %} {% block title %} HOME {% endblock %} 
+{% extends "base.html" %} {% block title %} Team {% endblock %} 
 
 {% block content%}
 
+    <h3> Bun venit Echipa: {% print(team.name) %} <h3>    
+
+    <br><br><br><br>    
     <form method="POST">
-        <h3 align="center">Schimba numele coechipierilor</h3>
+        <h3 align="center">Schimba numele Echipei</h3>
+        <br><br>
         <div class="form-group">
-            <label for="text">Nume Coechipieri</label>
+            <label for="text">Nume Echipa</label>
             <input
                 type="text"
                 class="form-control"
                 id="id_team"
                 name="id_team"
-                placeholder="Numele Coechipierilor"
+                placeholder="Numele Echipei"
             />
         </div>
 
