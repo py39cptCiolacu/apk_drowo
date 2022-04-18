@@ -12,10 +12,15 @@
    - login_team -> pentru logarea echipelor
    - team -> descrierea fiecarei echipe, numele participantilor (customizabil de catre ei), punctele obtinute si mai vedem
    - admin -> controlul nostru cat mai simplu asupra aplicatiei
-   - shop -> de stabilit exact
+   - shop -> l-am pornit, trebuie doar configurat
 
 3. Versiuni:
    - V1- backend :  - am creat baza aplicatiei: paginile home, login_team, team, admin. <br>
                     - am creat baza de date ce curprinde: username, password (per echipa pentru logare), puncte (nume de variabila ce trebuie pus in engleza ca sa ramanem cu toate asa), names (voi face ca fiecare echipa sa iti puna ea numele participantilor si sa apara pe pagina team) <br>
                     - am creat base.html -> asta e baza tuturor html-urilor pe care le vom avea. Va cuprinde doar chestiile comune pentru toate. <br>
+
+   - V2- backend: - am facut chestii de secutitate login
+                  - am verificat cateva chestii pentru shop
+                  - am facut baza de date pentru shop
+                  - am adaugat un meniu 
  
