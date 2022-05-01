@@ -1,5 +1,13 @@
 <html>
     <head>
+
+      <style>
+        body {
+          background-image: url("https://i.ibb.co/FV7SxBN/fundal2.png");
+          background-position: center;
+        }
+        </style>
+
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
         <meta charset="utf-8" />
@@ -17,6 +25,7 @@
         />
         <title>{% block title %}Home{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     </head>
 
     <body>
@@ -34,9 +43,10 @@
               <div class="navbar-nav">
                 <a class="nav-item nav-link" id="home" href="/">Home</a>
                 {% if team.is_authenticated %}
-                <a class="nav-item nav-link" id="logout" href="/logout_team">Log Out</a>
                 <a class="nav-item nav-link" id="login" href="/team">Echipa</a>
                 <a class="nav-item nav-link" id="signUp" href="/shop">Shop</a>
+                <a class="nav-item nav-link" id="shop_cart" href="/shop_cart">Cos</a>
+                <a class="nav-item nav-link" id="logout" href="/logout_team">Log Out</a>
                 {% else %}
                 <a class="nav-item nav-link" id="logout" href="/login_team">Login</a>
                 {% endif %}
@@ -79,6 +89,7 @@
               crossorigin="anonymous"
             ></script>
 
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         
     </body>
 

@@ -1,14 +1,19 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 from . import db
-from website.models import Team
+from website.models import Team, Product 
 from flask_login import login_user, login_required, logout_user, current_user
- 
 
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('admin', methods = ['GET', 'POST'])
+@auth.route("admin", methods =['GET', 'POST'])
 def admin():
+
+    return render_template('admin.html', team = current_user)
+
+
+@auth.route('admin_teams', methods = ['GET', 'POST'])
+def admin_teams():
 
     ## creare conturi
 
@@ -28,7 +33,49 @@ def admin():
             flash('Contul a fost creat cu succes', category='succes')
             return redirect(url_for('auth.login_team'))
 
-    return render_template('admin.html', team = current_user)
+    return render_template('admin_teams.html', team = current_user)
+
+
+@auth.route("admin_obj", methods =['GET', 'POST'])
+def admin_obj():
+
+    if request.method == 'POST':
+        obj_name = request.form.get('obj_name')
+        obj_imag = request.form.get('obj_imag')
+        obj_description = request.form.get('obj_descriotion')
+        obj_code = request.form.get('obj_code')
+        check = Product.query.filter_by(name = obj_name).first()
+        check2 = Product.query.filter_by(code = obj_code).first()
+        if check:
+            flash('Un produs cu acelasi nume exista deja')
+        elif check2:
+            flash('Un produs cu acest cod exista deja')
+        else:
+            product = Product(code = obj_code,image = obj_imag, name = obj_name, description= obj_description)
+            db.session.add(product)
+            db.session.commit()
+            flash('Produs adaugat', category='succes')
+
+    return render_template('admin_obj.html', team = current_user)
+
+
+@auth.route("admin_points", methods =['GET', 'POST'])
+def admin_points():
+
+    teams = Team.query.all()
+
+    if request.method == 'POST':
+        team_name = request.form.get('team_name')
+        nr_points = request.form.get('nr_points')
+        team = Team.query.filter_by(username = team_name).first()
+        if not team:
+            flash('Echipa nu exista', category='error')
+        else:
+            team.change_points(int(nr_points))
+            db.session.commit()
+            flash('Puncte Adaugate', category='succes')
+
+    return render_template('admin_points.html', team = current_user, teams = teams)
 
 
 @auth.route('/login_team', methods = ['GET', 'POST'])

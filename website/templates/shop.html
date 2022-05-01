@@ -3,15 +3,24 @@
 {% block content%}
 
 {% for product in products: %}
-    <span style = "color:{{ product.colors }};   
-                    border: 10px solid blue;
-                    outline: 10px solid darkblue;" > 
-                    {{product.name}} 
-                </span> 
+<div class = "center" style = "margin-top: 30px; margin-bottom: 30px; justify-items: center;" >
+
+    <div style =   "color: black;   
+                    border: solid 7px black;
+                    width: 264px; 
+                    text-align: center"> 
+            {{product.name}}  
+            
+    <br>
+
+    <form method = "POST">
+        <button name ='button' value = {{product.code}}> Adauga in cos</button>
+    </form>
+
+    </div> 
+</div>
 {% endfor %}
 
-<span style =   >
 
-</span>
 
 {% endblock%}

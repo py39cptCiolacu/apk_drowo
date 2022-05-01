@@ -1,7 +1,10 @@
 {% extends "base.html" %} {% block title %} Team {% endblock %} 
 
-{% block content%}
+{% block content%} 
 
+<h3> Puncte: {{current_user.points}} </h3>
+
+<br> <br>
     <h3> Bun venit Echipa: {% print(team.name) %} <h3>    
 
     <br><br><br><br>    
@@ -20,5 +23,11 @@
         </div>
 
     </form>
+
+    <br><br>
+
+    <h3> Obiectele tale </h3> <br>
+
+    <h3> Configuratie: {{current_user.config}} </h3>
 
 {% endblock%}

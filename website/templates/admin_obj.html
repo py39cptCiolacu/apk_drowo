@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %} Admin Obj {% endblock %} 
+
+{% block content%}
+
+<form method="POST">
+    <h3 align="center">Adauga Obiect</h3>
+    <div class="form-group">
+      <label for="text">Nume</label>
+      <input
+        type="text"
+        class="form-control"
+        id="obj_name"
+        name="obj_name"
+        placeholder="Nume"
+      />
+    </div>
+    <div class="form-group">
+      <label for="text">Imagine</label>
+      <input
+        type="text"
+        class="form-control"
+        id="obj_imag"
+        name="obj_imag"
+        placeholder="Imagine"
+      />
+    </div>
+    <div class="form-group">
+        <label for="text">Descriere</label>
+        <input
+          type="text"
+          class="form-control"
+          id="obj_description"
+          name="obj_description"
+          placeholder="Descriere"
+        />
+      </div>
+      <div class="form-group">
+        <label for="text">Cod</label>
+        <input
+          type="text"
+          class="form-control"
+          id="obj_code"
+          name="obj_code"
+          placeholder="Cod"
+        />
+      </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Adauga Obiectul</button>
+  </form>
+
+
+
+
+{% endblock %}

@@ -2,40 +2,40 @@
 
 {% block content%}
 
-<form method="POST">
-    <h3 align="center">Login</h3>
-    <div class="form-group">
-      <label for="text">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        id="id_team"
-        name="id_team"
-        placeholder="ID ECHIPA"
-      />
-    </div>
-    <div class="form-group">
-      <label for="password">Parola</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password_team"
-        name="password_team"
-        placeholder="Introdu parola"
-      />
-    </div>
-    <div class="form-group">
-        <label for="password">Parola</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password_team_confirm"
-          name="password_team_confirm"
-          placeholder="Repeta parola"
-        />
-      </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Creare cont</button>
-  </form>
+<br>
 
-{% endblock%}
+<a class="button" href="/admin_points">
+    Admin Points </a>
+<br>
+
+<a class="button" href="/admin_teams">
+    Admin Teams </a>
+<br>
+
+<a class="button" href="/admin_obj">
+    Admin Obj   </a>
+
+
+
+<style>
+
+.button {
+    background-color: #141414;
+    border: 1px solid rgba(54, 54, 54, 0.6);
+    font-weight: 600;
+    position: relative;
+    outline: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 45px;
+    width: 130px;
+    opacity: 1;
+  }
+
+</style>
+
+
+{% endblock %}
