@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %} Admin Delete Object {% endblock %} 
+
+{% block content%}
+
+<form method="POST">
+    <h3 align="center">Numele Echipei</h3>
+    <div class="form-group">
+      <label for="text">Nume</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Numele"
+      />
+      <button type="submit" class="btn btn-primary">Sterge Obiectul</button>
+    </form>
+
+{% endblock%}

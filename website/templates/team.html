@@ -2,32 +2,161 @@
 
 {% block content%} 
 
-<h3> Puncte: {{current_user.points}} </h3>
-
-<br> <br>
-    <h3> Bun venit Echipa: {% print(team.name) %} <h3>    
-
-    <br><br><br><br>    
-    <form method="POST">
-        <h3 align="center">Schimba numele Echipei</h3>
-        <br><br>
-        <div class="form-group">
-            <label for="text">Nume Echipa</label>
-            <input
-                type="text"
-                class="form-control"
-                id="id_team"
-                name="id_team"
-                placeholder="Numele Echipei"
-            />
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <span class="tag tag-teal"> {{current_user.name}} </span> <br>
+        <h4>
+            Puncte: {{current_user.points}} <br>
+            Frame: {{frame.name}} <br>
+            Configuratie: {{config.name}}
+        </h4>
+        <p>
+        </p>
+        <div class="user">
+          <div class="user-info">
+          </div>
         </div>
+      </div>
 
+    <form method="POST">
+        <div class="form-group">
+          <label for="text">Nume Echipa</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id_team"
+            name="id_team"
+            placeholder="Nume Echipa"
+          />
+        </div> 
+        <div class="form-group">
+          <label for="text">Culoare Echipa</label>
+          <input
+            type="text"
+            class="form-control"
+            id="color_team"
+            name="color_team"
+            placeholder="Culoare Echipa"
+          />
+        </div> 
+        <button type="submit" class="btn btn-primary" value = "color">Schimba Datele Echipei</button>
     </form>
 
-    <br><br>
+    </div>
+</div>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: #f7f8fc;
+  font-family: "Roboto", sans-serif;
+  color: #10182f;
+}
+.container {
+  display: flex;
+  width: 400px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+.card {
+  margin:0%; 
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 350px;
+}
+.card-header {
+  height: 50px;  
+  background-color: {{current_user.color}};
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 250px;
+}
 
-    <h3> Obiectele tale </h3> <br>
+.tag {
+  background: #cccccc;
+  border-radius: 50px;
+  font-size: 20px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  /* text-transform: uppercase; */
+  cursor: pointer;
+}
+.tag-teal {
+  background-color: #47bcd4;
+}
+.tag-purple {
+  background-color: blue;
+}
+.tag-pink {
+  background-color: #cd5b9f;
+}
 
-    <h3> Configuratie: {{current_user.config}} </h3>
+.card-body p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+.user {
+  display: flex;
+  margin-top: auto;
+}
+
+.user img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.user-info h5 {
+  margin: 0;
+}
+.user-info small {
+  color: blue;
+}
+
+.bn3637 {
+  background-color: #47bcd4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+}
+
+.bn36 {
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+
+.bn36:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
+
+</style>
+</style>
 
 {% endblock%}

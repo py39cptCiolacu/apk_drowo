@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %} Cos {% endblock %} 
+
+{% block content%}
+
+{%if config_cart == 'null':%}
+    <h3> nu ai configuratie in cos </h3>
+{%else:%} 
+    {{config_cart.name}} <br>
+    <form method = "POST">
+        <button name ='button' value = 'config'> Elimina din cos</button>
+    </form>
+{%endif%}
+
+
+{%if frame_cart == 'null':%}
+<h3> nu ai frame in cos </h3> 
+
+{%else:%} 
+{{frame_cart.name}}
+
+<form method = "POST">
+    <button name ='button' value = 'frame'> Elimina din cos</button>
+</form>
+{%endif%}
+<br><br><br>
+
+
+<form method = "POST">
+    <button name ='button' value = 'confirm'> finalizeaza comanda</button>
+</form>
+
+
+
+
+
+{% endblock%}

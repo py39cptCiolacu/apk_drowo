@@ -35,6 +35,24 @@ def admin_teams():
 
     return render_template('admin_teams.html', team = current_user)
 
+@auth.route("admin_obj_delete", methods =['GET', 'POST'])
+def admin_obj_delete():
+
+    
+    products = Product.query.all()
+
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        product_to_delete = Product.query.filter_by(name = name).first()
+        if product_to_delete:
+            db.session.delete(product_to_delete)
+            db.session.commit()
+        else:
+            flash('Nu exista obiectul', category='error')
+
+    return render_template('admin_obj_delete.html', team=current_user, products = products)
+
 
 @auth.route("admin_obj", methods =['GET', 'POST'])
 def admin_obj():
@@ -42,16 +60,17 @@ def admin_obj():
     if request.method == 'POST':
         obj_name = request.form.get('obj_name')
         obj_imag = request.form.get('obj_imag')
-        obj_description = request.form.get('obj_descriotion')
+        obj_description = request.form.get('obj_description')
         obj_code = request.form.get('obj_code')
+        obj_stoc = request.form.get('obj_stoc')
         check = Product.query.filter_by(name = obj_name).first()
         check2 = Product.query.filter_by(code = obj_code).first()
         if check:
-            flash('Un produs cu acelasi nume exista deja')
+            flash('Un produs cu acelasi nume exista deja', category='error')
         elif check2:
             flash('Un produs cu acest cod exista deja')
         else:
-            product = Product(code = obj_code,image = obj_imag, name = obj_name, description= obj_description)
+            product = Product(code = obj_code,image = obj_imag, name = obj_name, description= obj_description, stoc = int(obj_stoc))
             db.session.add(product)
             db.session.commit()
             flash('Produs adaugat', category='succes')

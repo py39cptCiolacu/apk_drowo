@@ -16,14 +16,22 @@ def home():
 @login_required
 def team():
 
+    config_code = current_user.config
+    frame_code = current_user.frame
+
+    config = Product.query.filter_by(code = config_code).first()
+    frame = Product.query.filter_by(code = frame_code).first()
+
     if request.method == 'POST':
         name = request.form.get('id_team')
+        color = request.form.get('color_team')
         current_user.change_name(name)
+        current_user.change_color(color)
         #db.session.update()
         db.session.commit()
-        flash('Nume actualizate', category='succes')
+        flash('Nume actualizat', category='succes')
 
-    return render_template('team.html', team = current_user)
+    return render_template('team.html', team = current_user, config=config, frame=frame)
 
 @views.route('shop', methods = ['GET', 'POST'])
 @login_required
@@ -33,15 +41,15 @@ def shop():
 
     if request.method == "POST":
         code = request.form.get('button')
-        #obj = Product.query.filter_by(code = code).first()
-        if code.startswith('CONFIG'):
+        obj = Product.query.filter_by(code = code).first()
+        if obj.stoc == 0:
+            flash('Acest obiect nu se mai afla pe stoc', category='error')
+        if code.startswith('FRAME'):
             current_user.add_cart_frame(code)
             db.session.commit()
-        if code.startswith('FRAME'):
+        if code.startswith('CONFIG'):
             current_user.add_cart_config(code)
-            db.session.commit()
-
-        
+            db.session.commit()        
 
     return render_template('shop.html', team = current_user, products = products)
 
@@ -65,6 +73,7 @@ def shop_cart():
     if not frame_cart:
         frame_cart = 'null'
 
+    print(config_cart, frame_cart)
 
     if request.method == 'POST':
         check = request.form.get('button')
@@ -81,16 +90,22 @@ def shop_cart():
             frame_cart = Product.query.filter_by(code = frame_cart_code).first()
             if current_user.cart_frame == '' or current_user.cart_config == '':
                  flash('Nu ai ambele obiecte in cos', category='error')
+                 return redirect(url_for('views.shop_cart'))
             elif current_user.points < (config_cart.price + frame_cart.price):
-                flash('Nu ai suficiente puncte', category='error')           
+                flash('Nu ai suficiente puncte', category='error')  
+                return redirect(url_for('views.shop_cart'))
+            elif config_cart.stoc == 0 or frame_cart == 0:
+                flash('Unul din produsele din cos nu mai este pe stoc', category='error')
+                return redirect(url_for('views.shop_cart'))         
             elif current_user.cart_frame != '' and current_user.cart_config != '':
                 current_user.add_config(current_user.cart_config)
                 current_user.add_frame(current_user.cart_frame)
                 current_user.add_cart_frame('')
                 current_user.add_cart_config('')
                 current_user.change_points(current_user.points - (config_cart.price + frame_cart.price))
+                config_cart.change_stoc(config_cart.stoc - 1)
                 db.session.commit()
-                return redirect(url_for('views.shop_cart'))
+                return redirect(url_for('views.team'))
 
 
     return render_template('shop_cart.html', team = current_user, config_cart=config_cart, frame_cart=frame_cart)

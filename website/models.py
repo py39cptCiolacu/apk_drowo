@@ -9,12 +9,13 @@ class Team(db.Model, UserMixin):
     password = db.Column(db.String(50))
     points = db.Column(db.Integer)
     name = db.Column(db.Integer)
+    color = db.Column(db.String(30))
     cart_frame = db.Column(db.String(100))
     cart_config = db.Column(db.String(100))
     frame = db.Column(db.String(100))
     config = db.Column(db.String(100))
 
-    def __init__(self, username, password, points = 0, name = 'Echipa', cart_frame ='', cart_config= '', frame ='', config = ''):
+    def __init__(self, username, password, points = 0, name = 'Echipa', cart_frame ='', cart_config= '', frame ='', config = '', color = '6600ff'):
         self.username = username
         self.password = password
         self.points = points
@@ -29,6 +30,9 @@ class Team(db.Model, UserMixin):
 
     def change_points(self, points):
         self.points = points
+
+    def change_color(self, color):
+        self.color = color
 
     def add_cart_frame(self, new_prod):
         self.cart_frame =  new_prod
@@ -49,10 +53,15 @@ class Product(db.Model):
     price = db.Column(db.Integer)
     description = db.Column(db.String(200))
     code = db.Column(db.String(100))
+    stoc = db.Column(db.Integer)
 
-    def __init__(self, image, name, description, code):
+    def __init__(self, image, name, description, code, stoc):
         self.price = int(code[-2:])
         self.image = image
         self.name = name
         self.description = description
         self.code = code
+        self.stoc = stoc
+
+    def change_stoc(self, stoc):
+        self.stoc = stoc
